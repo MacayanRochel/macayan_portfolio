@@ -1,0 +1,504 @@
+/* Reset some margin/padding */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Colors */
+:root {
+  --gold: #c8a165;
+  --gold-dark: #a7863e;
+  --navy-dark: #1a1f36;
+  --text-dark: #222;
+  --text-light: #fff;
+  --highlight-bg: #f8e4b8;
+}
+
+/* Sidebar */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: var(--navy-dark);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 20px;
+  box-shadow: 5px 0 8px rgb(0 0 0 / 0.2);
+  z-index: 1000;
+}
+
+/* Center nav links */
+.sidebar-nav {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-nav ul {
+  width: 100%;
+  padding-left: 0;
+  margin: 0;
+}
+
+.sidebar-nav ul li {
+  width: 100%;
+  text-align: center;
+}
+
+#sidebar .nav-link {
+  display: block;
+  padding: 0.75rem 1;
+  font-size: 1.1rem;
+  text-align: left;   
+  text-align: left;   
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.sidebar-nav .nav-link i {
+  color: var(--gold);
+  font-size: 1.3rem;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+ 
+
+#sidebar .nav-link span {
+  color: white;
+}
+
+#sidebar .nav-link:hover {
+  color: #d4af37; /* Gold text on hover */
+  background-color: rgba(242, 247, 248, 0.1); /* light gold bg */
+  border-radius: 8px;
+}
+
+/* Profile Image in Sidebar */
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--gold);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Large Profile Image in Cover Section */
+.profile-img-lg {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--gold);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  position: relative;
+}
+
+/* Optional decorative shape outline */
+.shape-outline {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 280px;
+  height: 280px;
+  border: 2px dashed var(--gold-dark);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.sidebar-nav ul li.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.sidebar-nav ul li.social-icons a {
+  font-size: 1.6rem;
+  color: var(--gold);
+  transition: color 0.3s ease;
+}
+
+.sidebar-nav ul li.social-icons a:hover {
+  color: var(--text-light);
+}
+
+/* Added for social icons as a standalone div below profile name */
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icons a {
+  font-size: 1.6rem;
+  color: var(--gold);
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--text-light);
+}
+
+#output .output-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+#output .output-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 250px; /* Fixed height */
+}
+
+#output .output-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#output .output-item:hover .output-img {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+#output .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark background with some transparency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border-radius: 8px;
+}
+
+#output .output-item:hover .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+#output .overlay-text {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+@media (max-width: 576px) {
+  #output .output-img {
+    height: 200px;
+  }
+}
+
+
+/* Main Content */
+#main-content {
+  margin-left: 280px;
+  padding: 30px 40px 60px;
+  min-height: 100vh;
+  background-image: url("background-portfolio.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: var(--text-light);
+}
+
+/* Dark overlay on background */
+#main-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(26, 31, 54, 0.75);
+  z-index: 0;
+}
+
+/* Ensure children are above overlay */
+#main-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cover Section */
+.cover-section {
+  min-height: 350px;
+}
+
+.profile-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-img-lg {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid var(--gold);
+  box-shadow: 0 0 20px rgba(255 215 0 / 0.9);
+  transition: transform 0.3s ease;
+}
+
+.profile-img-lg:hover {
+  transform: scale(1.05);
+}
+
+/* Shape outline behind profile */
+.shape-outline {
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 256px;
+  height: 256px;
+  border: 3px dashed var(--gold);
+  border-radius: 50%;
+  animation: pulseOutline 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseOutline {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+ 
+h1,
+h2,
+h3 {
+  color: var(--gold);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.text-highlight {
+  background: var(--highlight-bg);
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: #eee;
+}
+
+.btn-gold {
+  background-color: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-gold:hover,
+.btn-gold:focus {
+  background-color: var(--gold-dark);
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+/* Sections */
+.section-fullscreen {
+  background-color: var(--text-light);
+  color: var(--text-dark);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgb(0 0 0 / 0.12);
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--gold-dark);
+}
+
+/* Lists in PPT */
+.list-group-item a {
+  text-decoration: none;
+  color: var(--navy-dark);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.list-group-item a:hover {
+  text-decoration: underline;
+  color: var(--gold-dark);
+}
+
+.list-group-item {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Image gallery */
+#images img {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+#images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(200, 161, 101, 0.8);
+}
+
+/* Section styling */
+#video {
+  background-color: #fff;
+  color: #333;
+  padding: 40px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+#video .section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Embed video styling */
+#video .ratio {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background-color: #000;
+}
+
+#video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Button styling */
+.btn-video {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-video:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-video:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+
+
+/* Footer */
+footer {
+  background-color: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  margin-top: 3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  #main-content {
+    margin-left: 0;
+    padding: 20px 15px 40px;
+  }
+  #sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-shadow: none;
+  }
+  .profile-section {
+    margin-bottom: 0;
+  }
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .sidebar-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .sidebar-nav ul li {
+    width: auto;
+    margin: 0 10px;
+    text-align: center;
+  }
+  .sidebar-nav ul li.social-icons {
+    justify-content: center;
+  }
+  .cover-section {
+    flex-direction: column !important;
+  }
+  .profile-img-lg {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* View button styling */
+.list-group-item .btn {
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 5px;
+}
+
+
